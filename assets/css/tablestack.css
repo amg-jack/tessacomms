@@ -1,0 +1,60 @@
+@media only screen and (max-width: 960px) {
+
+    /* Force table to not be like tables anymore */
+    #table-stack table,
+    #table-stack thead,
+    #table-stack tbody,
+    #table-stack th,
+    #table-stack td,
+    #table-stack tr {
+        display: block;
+    }
+
+    #table-stack tr:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #table-stack thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #table-stack tr {
+        border: solid 1px rgba(14, 46, 71, 0.575);
+        margin-bottom: 20px;
+    }
+
+    #table-stack td {
+        /* Behave  like a "row" */
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    #table-stack td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Label the data */
+    #table-stack td:before {
+        content: attr(data-title);
+    }
+
+    #table-stack td::after {
+        content: "\00a0";
+    }
+}
+
