@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Direct Comms</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/bootstrapselect/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/tablestack.css">
+
+    <style>
+        .input-group-text {
+            height: 100% !important;
+            color: black;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: 0;
+            padding-top: 0;
+            font-size: 8pt !important;
+        }
+
+        .form-control-sm,
+        .form-control {
+            font-size: 9pt !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!--AMG Master Heading with logo-->
+    <div class="container-fluid amghead">
+        <a href="/002MainMenu.aspx"><img src="assets/img/tessalogo.png" alt="AMG TESSA">
+        </a>
+        <span class="text-white float-right pr-5 pt-2">Asset Management Group</span>
+        <div class="text-white text-center h5">AMG Ref - Address Here</div>
+    </div>
+    <div id="subheadbar">&nbsp;</div>
+    <!--End Master AMG Heading-->
+
+    <!--Links-->
+    <div class="text-center pt-2 text-small">
+        <a class="green-link font-weight-bold" href="99Comms.aspx?vID" target="_blank">Comms</a>
+        <a class="green-link font-weight-bold pl-3" href="010TalkSheetOut.aspx?vID=" target="_blank">Talksheet</a>
+        <a class="green-link font-weight-bold pl-3" href="#"
+            onclick="window.open('000CaseHandlerSearch.aspx','CaseHandler','height=125,width=250,menubar=no,toolbar=no');">Handler
+            Search</a>
+        <a class="green-link font-weight-bold pl-3" href="006InstructionAudit.aspx?vID=" target="_blank">Audit</a>
+        <a class="green-link font-weight-bold pl-3" href="010InternalNotesOut.aspx?vID=" target="_blank">Internal
+            Notes</a>
+    </div>
+
+    <div class="d-flex">
+
+        <div class="col-md-12 col-xxl-9">
+            <div class="card mt-2 all-shadow">
+                <div class="card-header bg-amg text-white text-center pb-1 pt-2">Send Communication</div>
+                <div id="subheadbar">&nbsp;</div>
+                <div class="card-body pt-0 pb-1 mb-2">
+
+                    <div class="row mt-2">
+
+                        <div class="col-md-12">
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Category</span>
+                                        </div>
+                                        <select name="vNew" id="vNew" onchange="document.forms.Fax.submit()"
+                                            class="selectpicker form-control form-control-sm"
+                                            data-style="form-control form-control-sm border">
+                                            <option value="-1">select</option>
+                                            <option value="1">Client</option>
+                                            <option value="2">Solicitors</option>
+                                            <option value="3">Sharedownership</option>
+                                            <option value="4">Leaseholders</option>
+                                            <option value="5">Field Agents</option>
+                                            <option value="6">Letting Agent</option>
+                                            <option value="7">Estate Agents</option>
+                                            <option value="8">Valuations</option>
+                                            <option value="9">Auctioneers</option>
+                                            <option value="10">Maintenance Contractors</option>
+                                            <option value="12">Internal</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">To</span>
+                                        </div>
+                                        <select name="To" id="To" onchange="document.forms.Fax.submit()"
+                                            class="selectpicker form-control form-control-sm"
+                                            data-style="form-control form-control-sm border" data-live-search="true">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Contact</span>
+                                        </div>
+                                        <select name="vContact"
+                                            onchange="document.Fax.vEmail.value=document.Fax.vContact.value;document.Fax.Attn.value=document.Fax.vContact.options[this.selectedIndex].text;"
+                                            class="selectpicker form-control form-control-sm"
+                                            data-style="form-control form-control-sm border">
+                                            <option value="">Please Select...</option>
+                                            <option value="test1">Test Client</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row mt-2 mb-3">
+
+                               
+
+                                <div class="col-md-4 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Other Recipient</span>
+                                        </div>
+                                        <input type="text" name="ToExtra" class="form-control form-control-sm"
+                                            maxlength="255">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Attn</span>
+                                        </div>
+                                        <input type="text" name="Attn" id="Attn" value=""
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Email Template</span>
+                                        </div>
+                                        <select name="" id="templateDemo" class="form-control form-control-sm">
+                                            <option value="">None Selected</option>
+                                            <option value="1">Price Amendment (Demo)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+
+                            <hr>
+
+                            <div class="row mt-3">
+
+                                <div class="col-md-12 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Subject</span>
+                                        </div>
+                                        <input type="text" name="Description" id="Description" value=""
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+
+                                
+                                
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-6 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Email</span>
+                                        </div>
+                                        <input type="text" name="vEmail" id="Description" value=""
+                                            class="form-control form-control-sm" onchange="removesemi(this);">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-2 mt-md-0">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">From</span>
+                                        </div>
+                                        <input type="text" name="From" id="Fax" value=""
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <a class="input-group-text font-weight-bolder underlined"
+                                                onclick="window.open('099MailCC.aspx?vID=627458485a566f69395a305838726a373459613572773d3d', 'Recipients', 'resizable, scrollbars, width=400,height=450');">Email
+                                                CC</a>
+                                        </div>
+                                        <input name="vEmailCC" type="text" class="form-control form-control-sm"
+                                            onchange="removesemi(this);" value="" maxlength="255">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-2 mt-md-0">
+                                    <div class="input-group w-100">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Send Method</span>
+                                        </div>
+
+                                        <div
+                                            class="radio-toolbar d-flex justify-content-between col-7 col-md-auto col-lg-4 col-xxl-6">
+                                            <input type="radio" name="vMethod" id="Email" value="1"
+                                                onclick="checkMethod();" checked>
+                                            <label for="Email"
+                                                class="col-md-12 col-lg-12 col-xxl-6 ml-md-1 ml-lg-1 ml-xxl-0 mr-2">Email</label>
+
+                                            <input type="radio" name="vMethod" id="View" value="3"
+                                                onclick="checkMethod();">
+                                            <label for="View" class="col-md-12 col-lg-12 col-xxl-6">View</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <hr>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="row">
+
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Flags</span>
+                                        </div>
+
+                                        <div class="radio-toolbar d-flex justify-content-between">
+                                            <input type="radio" name="flags" id="none" value="none" checked="">
+                                            <label for="none" class="col-md-4 col-lg-7 ml-2">None</label>
+
+                                            <input type="radio" name="flags" id="urgent" value="urgent">
+                                            <label for="urgent" class="col-md-4 col-lg-7 ml-2">Urgent</label>
+
+                                            <input type="radio" name="flags" id="confidential" value="confidential">
+                                            <label for="confidential" class="col-lg-7 ml-2">Confidential</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Date</span>
+                                        </div>
+                                        <input type="text" name="Date" id="Date" value="09/02/2024"
+                                            class="form-control form-control-sm" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Time</span>
+                                        </div>
+                                        <input type="text" name="Time" id="Time" value="09:35"
+                                            class="form-control form-control-sm" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Reference</span>
+                                </div>
+                                <div class="text-danger ml-2 font-weight-bold">
+                                    AMG REF. TST170395 - TESSA Server Test 03 Barclays, Unit 7, 13-21 High Street,
+                                    Guildford, Surrey, GU1 3DG
+                                </div>
+                            </div>
+
+                            <div class="input-addon-borderless">
+                                <div class="input-addon mt-2 text-center">Email Body</div>
+
+                                <textarea name="" id="result" class="form-control" rows="10"></textarea>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <input type="submit" name="imageField"
+                                onclick="document.forms.Fax.vClicked.value='SAVE'; return OnSubmit();" value="Back"
+                                class="btn btn-amg col-md-6 col-lg-4">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end">
+                            <input type="submit" name="submit" onclick="return OnSubmit();" value="Submit"
+                                class="btn btn-amg col-md-6 col-lg-4">
+                        </div>
+                    </div>
+
+
+
+                </div> <!--End Card Body-->
+
+            </div> <!--End Card-->
+        </div>
+
+
+        <div class="col-md-12 col-xxl-3">
+
+            <div class="card mt-2 all-shadow">
+                <div class="card-header bg-amg text-white pb-1 pt-2 text-center">Attachments</div>
+                <div id="subheadbar">&nbsp;</div>
+                <div class="card-body">
+
+
+                    <div class="input-addon-borderless form-group">
+                        <div class="input-addon text-center">Attach item from comms</div>
+                        <select name="vAttachement1" id="" class="form-control form-control-sm"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                        <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                        <select name="vAttachement3" id="" class="form-control form-control-sm mt-1"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="input-addon-borderless form-group mt-3">
+                        <div class="input-addon text-center">Generate new letter and attach</div>
+                        <select name="vAttachement1" id="" class="form-control form-control-sm"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                        <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                        <select name="vAttachement3" id="" class="form-control form-control-sm mt-1"
+                            data-style="form-control form-control-sm border">
+                            <option value=""></option>
+                        </select>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="input-addon-borderless form-group mt-3">
+                        <div class="input-addon text-center mb-3">Upload file(s) to attach</div>
+                        <input type="file" name="" id="" multiple class="small">
+                    </div>
+
+                    <hr>
+
+                    <script>
+                        // Get the select box element
+                        var selectBox = document.getElementById('templateDemo');
+                
+                        // Add change event listener
+                        selectBox.addEventListener('change', function() {
+                            // Get the selected value
+                            var selectedValue = selectBox.value;
+                
+                            // Get the result textarea element
+                            var resultTextarea = document.getElementById('result');
+                
+                            // If the selected value is 1, append text to the result textarea
+                            if (selectedValue === '1') {
+                                resultTextarea.value += 'Dear sirs \n\nWith reference to your instructions to market the above property'+
+                                ' we would like you to amend the current asking price to <oo->£ <Asking Price> with immediate effect. \n\n' +
+                                'Please ensure that the property is advertised at the new price and that new sales particulars are circulated'+
+                                ' to all interested parties and a copy emailed to AMG within 48 hours.\n\n' +
+                                'Thank you for your assistance.\n\n' +
+                                'Yours faithfully\n'
+                            }
+                            if (selectedValue === '') {
+                                resultTextarea.value = '';
+                            }
+                        });
+                    </script>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        function checkMethod() {
+            if ((document.getElementById("Email").checked == true) && (document.getElementById("View").checked != true)) {
+                document.querySelector("input[name='submit']").value = "Send Email";
+            }
+            else if ((document.getElementById("Email").checked != true) && (document.getElementById("View").checked = true)) {
+                document.querySelector("input[name='submit']").value = "View";
+            }
+        }
+
+    </script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/bootstrapselect/js/bootstrap-select.js"></script>
+</body>
+
+</html>
