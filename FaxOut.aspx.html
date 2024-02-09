@@ -147,12 +147,12 @@
                                 </div>
 
                                 <div class="col-md-4 mt-2 mt-md-0">
-                                    <div class="input-group">
+                                    <div class="input-group" style="border: 1px solid red !important;">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Email Template</span>
                                         </div>
                                         <select name="" id="templateDemo" class="form-control form-control-sm">
-                                            <option value="">None Selected</option>
+                                            <option value="0">None Selected</option>
                                             <option value="1">Price Amendment (Demo)</option>
                                         </select>
                                     </div>
@@ -345,7 +345,7 @@
                         <div class="input-addon text-center">Attach item from comms</div>
                         <select name="vAttachement1" id="" class="form-control form-control-sm"
                             data-style="form-control form-control-sm border">
-                            <option value=""></option>
+                            <option value="0"></option>
                         </select>
                         <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
@@ -361,9 +361,10 @@
 
                     <div class="input-addon-borderless form-group mt-3">
                         <div class="input-addon text-center">Generate new letter and attach</div>
-                        <select name="vAttachement1" id="" class="form-control form-control-sm"
-                            data-style="form-control form-control-sm border">
-                            <option value=""></option>
+                        <select name="vAttachement1" id="genDemo" class="form-control form-control-sm"
+                            data-style="form-control form-control-sm border" style="border: 1px solid red !important;">
+                            <option value="0"></option>
+                            <option value="1">Confirmation of Possession</option>
                         </select>
                         <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
@@ -384,7 +385,9 @@
 
                     <hr>
 
-                    <script>
+
+
+                   <!--- <script>
                         // Get the select box element
                         var selectBox = document.getElementById('templateDemo');
                 
@@ -410,7 +413,7 @@
                             }
                         });
                     </script>
-
+                -->
 
                 </div>
             </div>
@@ -435,6 +438,57 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script src="assets/bootstrapselect/js/bootstrap-select.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Add change event listener using jQuery
+            $('#templateDemo').change(function() {
+                // Get the selected value
+                var selectedValue = $(this).val();
+
+                // Get the result textarea element
+                var resultTextarea = $('#result');
+
+                // Reset the result textarea if no option is selected
+                if (selectedValue === '0') {
+                    resultTextarea.val('');
+                }
+
+                // If the selected value is 1, load multi-line text from file and append to the result textarea
+                if (selectedValue === '1') {
+                    $.get('price_amendment.txt', function(data) {
+                        // Append the loaded text to the result textarea
+                        resultTextarea.val(resultTextarea.val() + data + '\n');
+                    });
+                }
+            });
+
+            $('#genDemo').change(function() {
+                // Get the selected value
+                var selectedGenValue = $(this).val();
+
+                // Get the result textarea element
+                var resultTextarea = $('#result');
+
+                // Reset the result textarea if no option is selected
+                if (selectedGenValue === '0') {
+                    resultTextarea.val('');
+                }
+
+                // If the selected value is 1, load multi-line text from file and append to the result textarea
+                if (selectedGenValue === '1') {
+                    $.get('standard_wording.txt', function(data) {
+                        // Append the loaded text to the result textarea
+                        resultTextarea.val(resultTextarea.val() + data + '\n');
+                    });
+                }
+            });
+
+        });
+
+      
+    </script>
+
 </body>
 
 </html>
