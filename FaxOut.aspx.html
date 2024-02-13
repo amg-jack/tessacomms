@@ -151,7 +151,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Email Template</span>
                                         </div>
-                                        <select name="" id="templateDemo" class="form-control form-control-sm">
+                                        <select name="templateDemo" id="templateDemo" class="selectpicker form-control form-control-sm" data-style="form-control form-control-sm border">
                                             <option value="0">None Selected</option>
                                             <option value="1">Price Amendment (Demo)</option>
                                         </select>
@@ -343,15 +343,15 @@
 
                     <div class="input-addon-borderless form-group">
                         <div class="input-addon text-center">Attach item from comms</div>
-                        <select name="vAttachement1" id="" class="form-control form-control-sm"
+                        <select name="vAttachement1" id="" class="selectpicker form-control form-control-sm"
                             data-style="form-control form-control-sm border">
                             <option value="0"></option>
                         </select>
-                        <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
+                        <select name="vAttachement2" id="" class="selectpicker form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
                             <option value=""></option>
                         </select>
-                        <select name="vAttachement3" id="" class="form-control form-control-sm mt-1"
+                        <select name="vAttachement3" id="" class="selectpicker form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
                             <option value=""></option>
                         </select>
@@ -359,18 +359,18 @@
 
                     <hr>
 
-                    <div class="input-addon-borderless form-group mt-3">
+                    <div class="input-addon-borderless form-group mt-3" style="border: 1px solid red !important;">
                         <div class="input-addon text-center">Generate new letter and attach</div>
-                        <select name="vAttachement1" id="genDemo" class="form-control form-control-sm"
-                            data-style="form-control form-control-sm border" style="border: 1px solid red !important;">
+                        <select name="vAttachement1" id="genDemo" class="selectpicker form-control form-control-sm"
+                            data-style="form-control form-control-sm border">
                             <option value="0"></option>
                             <option value="1">Confirmation of Possession</option>
                         </select>
-                        <select name="vAttachement2" id="" class="form-control form-control-sm mt-1"
+                        <select name="vAttachement2" id="" class="selectpicker form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
                             <option value=""></option>
                         </select>
-                        <select name="vAttachement3" id="" class="form-control form-control-sm mt-1"
+                        <select name="vAttachement3" id="" class="selectpicker form-control form-control-sm mt-1"
                             data-style="form-control form-control-sm border">
                             <option value=""></option>
                         </select>
@@ -387,7 +387,7 @@
 
 
 
-                   <!--- <script>
+                <script>
                         // Get the select box element
                         var selectBox = document.getElementById('templateDemo');
                 
@@ -408,12 +408,35 @@
                                 'Thank you for your assistance.\n\n' +
                                 'Yours faithfully\n'
                             }
-                            if (selectedValue === '') {
+                            if (selectedValue == 0 || selectedValue == '') {
                                 resultTextarea.value = '';
                             }
                         });
-                    </script>
-                -->
+                </script>
+
+                <script>
+                    // Get the select box element
+                    var selectBox2 = document.getElementById('genDemo');
+                    
+                    // Add change event listener
+                    selectBox2.addEventListener('change', function() {
+                        // Get the selected value
+                        var selectedValue = selectBox2.value;
+            
+                        // Get the result textarea element
+                        var resultTextarea = document.getElementById('result');
+            
+                        // If the selected value is 1, append text to the result textarea
+                        if (selectedValue === '1') {
+                            resultTextarea.value +=
+                                `Dear sirs, \n\nPlease find attached <Letter name here>. \n\n Kind regards, \n\n <Insert HTML Signature>`
+                        }
+                        if (selectedValue == 0 || selectedValue == '') {
+                            resultTextarea.value = '';
+                        }
+                    });
+                </script>
+                
 
                 </div>
             </div>
@@ -440,8 +463,8 @@
     <script src="assets/bootstrapselect/js/bootstrap-select.js"></script>
 
     <script>
-        $(document).ready(function() {
-            // Add change event listener using jQuery
+       /* $(document).ready(function() {
+             Add change event listener using jQuery
             $('#templateDemo').change(function() {
                 // Get the selected value
                 var selectedValue = $(this).val();
@@ -486,6 +509,7 @@
 
         });
 
+        */
       
     </script>
 
